@@ -1,0 +1,35 @@
+// Colors
+$color-white: #ffffff;
+$color-dim-gray: #747474;
+$color-grey: #777777;
+$color-montana: #393b3c;
+$color-east-bay: #45526e;
+$color-lucky: #A59400;
+$color-fire-brick: #C82020;
+$color-salmon: #ff7575;
+$color-heliotrope: #dc5dfc;
+$color-perano: #b4a9ff;
+$color-slate-blue: #6A5DC2;
+$color-cornflower-blue: #67a5eb;
+$color-forest-green: #308E21;
+$color-dark-green :#0A0B0B;
+$color-black: #000000;
+
+$color-white-25: rgba($color-white, 0.25);
+$color-white-33: rgba($color-white, 0.33);
+$color-white-50: rgba($color-white, 0.5);
+$color-white-70: rgba($color-white, 0.7);
+$color-white-80: rgba($color-white, 0.8);
+
+$color-black-40: rgba($color-black, 0.4);
+$color-dark-green-90: rgba($color-dark-green, 0.9);
+$color-dark-green-50: rgba($color-dark-green, 0.5);
+
+$gradient-dark: linear-gradient(180deg, #000000 0%, rgba(39, 36, 36, 0.7) 100%);
+$gradient-overlay: linear-gradient(178.73deg, rgba(39, 135, 245, 0.18) -17.53%, rgba(163, 147, 245, 0.18) 131.74%);
+
+// Typography
+$ff-main: "Play", "Arial", sans-serif;
+
+// Animation
+$transition-300: ease-in 0.3s;

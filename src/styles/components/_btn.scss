@@ -1,0 +1,60 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  padding: 16px 48px;
+  border: none;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  border-radius: 28px;
+  outline: none;
+
+  cursor: pointer;
+  transition:
+    background-color $transition-300,
+    color $transition-300,
+    border-color $transition-300;
+
+  &:hover:not(:focus-visible) {
+    background-color: $color-cornflower-blue;
+  }
+}
+
+.btn--primary {
+  background-color: $color-cornflower-blue;
+  color: $color-white;
+
+  &:focus-visible {
+    background-color: $color-east-bay;
+    color: $color-white-80;
+  }
+
+  &:hover:not(:focus-visible) {
+    background-color: $color-east-bay;
+    color: $color-white-80;
+  }
+}
+
+.btn--secondary {
+  background-color: $color-montana;
+  color: $color-white;
+  border: 1px solid $color-black-40;
+  padding: 15px 47px;
+
+  &:focus-visible {
+    background-color: $color-east-bay;
+    color: $color-white-80;
+    border-color: $color-east-bay;
+  }
+
+  &:hover:not(:focus-visible) {
+    background-color: $color-east-bay;
+    color: $color-white-80;
+    border-color: $color-east-bay;
+  }
+}

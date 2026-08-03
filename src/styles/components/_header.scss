@@ -1,0 +1,393 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.header {
+  padding: 24px 0;
+
+  @include vp-767 {
+    padding: 16px 0 8px;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    height: 48px;
+
+    @include vp-1200 {
+      gap: 25px;
+    }
+
+    @include vp-1023 {
+      gap: 15px;
+    }
+
+    @include vp-767 {
+      height: 32px;
+      gap: 20px;
+    }
+  }
+
+  &__logo-link {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    margin-right: 40px;
+    padding-left: 7px;
+    outline: 1px solid transparent;
+    outline-offset: 5px;
+    transition: outline-color $transition-300;
+
+    &:focus-visible {
+      outline-color: $color-heliotrope;
+    }
+
+    @include vp-1200 {
+      margin-right: 25px;
+    }
+
+    @include vp-1023 {
+      margin-right: 0;
+    }
+
+    @include vp-767 {
+      margin-right: auto;
+      gap: 5px;
+    }
+  }
+
+  &__logo-img {
+    width: 25px;
+    height: 32px;
+
+    @include vp-1023 {
+      width: 20px;
+      height: 26px;
+    }
+
+    @include vp-767 {
+      height: 18px;
+      width: 14px;
+    }
+  }
+
+  &__logo-title {
+    position: relative;
+    margin-bottom: 3px;
+    width: 100px;
+    height: 21px;
+    color: $color-white;
+
+    @include vp-1023 {
+      width: 80px;
+      height: 17px;
+    }
+
+    @include vp-767 {
+      width: 56px;
+      height: 12px;
+      top: 2px;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    height: 48px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+
+    @include vp-1200 {
+      gap: 25px;
+    }
+
+    @include vp-1023 {
+      gap: 15px;
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    @include vp-767 {
+      gap: 16px;
+      height: 32px;
+    }
+  }
+
+  &__nav-item {
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+
+    @include vp-767 {
+      padding: 0;
+      border: none;
+    }
+  }
+
+  &__nav-item:first-child {
+    @include vp-767 {
+      display: none;
+    }
+  }
+
+  &__nav-item--active {
+    border-bottom-color: $color-heliotrope;
+  }
+
+  &__nav-link {
+    color: $color-white;
+    outline: none;
+    transition: color $transition-300;
+
+    &:focus-visible,
+    &:hover:not(:focus-visible) {
+      color: $color-heliotrope;
+    }
+  }
+
+  &__nav-item--active &__nav-link {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &__nav-title {
+    display: block;
+
+    @include vp-767 {
+      display: none;
+    }
+  }
+
+  &__genres-icon {
+    display: none;
+
+    @include vp-767 {
+      display: block;
+    }
+  }
+
+  &__search-form {
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 300px;
+    margin-right: 40px;
+
+    @include vp-1200 {
+      margin-right: 10px;
+    }
+
+    @include vp-1023 {
+      margin-right: 0;
+    }
+
+    @include vp-767 {
+      min-width: auto;
+      flex-grow: 0;
+      z-index: 102;
+    }
+  }
+
+  &__search-input {
+    width: 100%;
+    max-width: 655px;
+    min-width: 300px;
+    height: 48px;
+    border-radius: 8px;
+    border: none;
+    padding: 12px 16px 12px 52px;
+    outline: none;
+    color: $color-white;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    background-color: $color-montana;
+
+    &::placeholder {
+      color: $color-white-50;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    @include vp-767 {
+      position: fixed;
+      top: 16px;
+      left: 20px;
+      right: 20px;
+      max-width: unset;
+      width: auto;
+      height: 56px;
+      padding: 16px 52px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity $transition-300;
+      z-index: 101;
+
+      &.is-active {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &__search-btn {
+    display: none;
+    padding: 8px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: $color-white;
+    transition: color $transition-300;
+
+    @include vp-767 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 102;
+    }
+
+    &:hover {
+      color: $color-heliotrope;
+    }
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    color: $color-white-50;
+    transition: color $transition-300;
+
+    @include vp-767 {
+      position: fixed;
+      left: 36px;
+      top: 32px;
+      transform: none;
+      z-index: 102;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity $transition-300;
+
+      .header__search-input.is-active ~ & {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &__search-close-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: none;
+    color: $color-white-50;
+    background: none;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: color $transition-300;
+    z-index: 1;
+
+    @include vp-767 {
+      display: flex;
+      transform: none;
+      color: $color-white;
+      z-index: 102;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity $transition-300;
+
+      .header__search-input.is-active ~ & {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      color: $color-white;
+    }
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__search-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  &__user {
+    padding: 8px 0 5px 0;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    color: $color-white;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    transition: color $transition-300;
+
+    &:focus-visible,
+    &:hover:not(:focus-visible) {
+      color: $color-heliotrope;
+    }
+
+    @include vp-1023 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    @include vp-767 {
+      padding: 0;
+      padding-right: 2px;
+      border: none;
+    }
+
+    &--active {
+      border-bottom-color: $color-heliotrope;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
+  &__user-title {
+    display: block;
+
+    @include vp-767 {
+      display: none;
+    }
+  }
+
+  &__user-icon {
+    display: none;
+
+    @include vp-767 {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.favorites {
+  padding-bottom: 40px;
+
+  .cards:not(.cards--swiper) {
+    @include vp-767 {
+      display: none;
+    }
+  }
+
+  .cards__item {
+    @include vp-767 {
+      width: 224px;
+    }
+  }
+
+  .cards__card {
+    outline-offset: 0;
+  }
+
+  &__remove-btn {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 13px;
+    border: none;
+    border-radius: 50%;
+    background-color: $color-white;
+    color: $color-black;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity $transition-300;
+    z-index: 10;
+
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:focus-visible {
+      opacity: 1;
+
+    }
+  }
+}
+

@@ -1,0 +1,56 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.best-films {
+  padding-top: 40px;
+  padding-bottom: 50px;
+  overflow: hidden;
+
+  @include vp-767 {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  &__title {
+    margin: 0 0 64px;
+    padding: 0;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+
+    @include vp-767 {
+      margin-bottom: 40px;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  &__list {
+    padding-bottom: 72px;
+
+    @include vp-767 {
+      display: none;
+    }
+
+    .cards__item {
+      @include vp-767 {
+        width: 224px;
+      }
+    }
+
+    .cards__card {
+      flex-direction: column;
+      position: relative;
+    }
+  }
+
+  &__swiper {
+    width: 100%;
+    height: 100%;
+    overflow: visible !important;
+
+    .cards__item {
+      width: 224px;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@mixin vp-1200 {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin vp-1023 {
+  @media (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin vp-767 {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin vp-375 {
+  @media (max-width: 375px) {
+    @content;
+  }
+}
+
+@mixin vp-1023-landscape {
+  @media (max-width: 1023px) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin vp-767-portrait {
+  @media (max-width: 767px) and (orientation: portrait) {
+    @content;
+  }
+}

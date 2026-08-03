@@ -1,0 +1,217 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.hero {
+  position: relative;
+  padding-top: 32px;
+
+  @include vp-767 {
+    padding-top: 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: auto;
+
+    @include vp-1200 {
+      flex-direction: column-reverse;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    @include vp-767 {
+      gap: 24px;
+    }
+  }
+
+  &__left-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 590px;
+    min-height: 405px;
+    flex-basis: 47%;
+
+    @include vp-1200 {
+      flex-basis: unset;
+      max-width: 100%;
+      min-height: 300px;
+    }
+
+    @include vp-767 {
+      gap: 12px;
+      min-height: auto;
+    }
+  }
+
+  &__attributes {
+    display: flex;
+    gap: 16px;
+    height: 32px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__rating {
+    padding: 4px 12px;
+    min-width: 70px;
+    height: 100%;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    background-color: $color-forest-green;
+
+    &--gold {
+      background-color: $color-lucky;
+    }
+    &--green {
+      background-color: $color-forest-green;
+    }
+    &--gray {
+      background-color: $color-grey;
+    }
+    &--red {
+      background-color: $color-fire-brick;
+    }
+  }
+
+  &__star-icon {
+    position: relative;
+    top: 2px;
+  }
+
+  &__date,
+  &__genre,
+  &__duration {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: $color-white-70;
+
+    @include vp-767 {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+
+    @include vp-1023 {
+      font-size: 40px;
+      line-height: 48px;
+    }
+
+    @include vp-767 {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  &__description {
+    margin-bottom: 44px;
+    font-size: 24px;
+    line-height: 32px;
+    color: $color-white-70;
+
+    @include vp-1023 {
+      margin-bottom: 20px;
+    }
+
+    @include vp-767 {
+      margin-bottom: 20px;
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+
+  &__buttons-block {
+    display: flex;
+    gap: 16px;
+    height: 56px;
+    align-items: center;
+    justify-content: flex-start;
+
+    @include vp-767 {
+      flex-wrap: wrap;
+      height: auto;
+      max-width: 370px;
+    }
+
+    &--compact {
+      @include vp-767 {
+        flex-wrap: nowrap;
+
+        .hero__trailer-btn {
+          padding: 16px 88px;
+        }
+      }
+    }
+  }
+
+  &__trailer-btn {
+    @include vp-767 {
+      padding: 16px 130px;
+    }
+  }
+
+  &__about-btn {
+    @include vp-767 {
+      padding: 15px 40px;
+    }
+  }
+
+  &__favorite-btn {
+    padding: 17px 23px;
+  }
+
+  &__like-icon {
+    fill: transparent;
+    stroke-width: 2;
+    stroke: $color-white;
+
+    &--like {
+      fill: $color-perano;
+      stroke: none;
+    }
+  }
+
+  &__update-btn {
+    padding: 17px 23px;
+  }
+
+  &__right-block {
+    flex-basis: 53%;
+    height: clamp(234px, 40vw, 552px);
+    max-width: 680px;
+    border-radius: 16px;
+    overflow: hidden;
+
+    @include vp-375 {
+      min-width: 338px;
+    }
+  }
+
+  &__picture {
+    width: 100%;
+    height: 100%;
+
+    @include vp-375 {
+      height: 234px;
+      width: 338px;
+
+      &--expanded {
+        width: 334px;
+        height: 260px;
+      }
+    }
+  }
+}

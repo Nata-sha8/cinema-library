@@ -1,0 +1,141 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.account {
+  padding-top: 64px;
+  padding-bottom: 30px;
+  overflow-x: hidden;
+
+  @include vp-767 {
+    padding-top: 25px;
+  }
+
+  &__title {
+    margin: 0 0 70px;
+    padding: 0;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+
+    @include vp-767 {
+      margin-bottom: 45px;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 64px;
+
+    @include vp-767 {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    gap: 65px;
+
+    @include vp-767 {
+      gap: 24px;
+    }
+  }
+
+  &__nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    font-family: $ff-main;
+    color: $color-white;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    transition: color $transition-300;
+
+    &:hover,
+    &:focus {
+      color: $color-heliotrope;
+    }
+
+    &:hover .account__icon,
+    &:focus .account__icon {
+      color: $color-heliotrope;
+    }
+
+    &:hover .account__icon--like,
+    &:focus .account__icon--like {
+      stroke: $color-heliotrope;
+    }
+
+    &--active {
+      border-bottom-color: $color-heliotrope;
+      cursor: default;
+      pointer-events: none;
+      color: $color-white;
+
+      .account__icon {
+        color: $color-white;
+
+        &--like {
+          stroke: $color-white;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        color: $color-white;
+        border-bottom-color: $color-heliotrope;
+      }
+
+      &:hover .account__icon,
+      &:focus .account__icon {
+        color: $color-white;
+      }
+
+      &:hover .account__icon--like,
+      &:focus .account__icon--like {
+        stroke: $color-white;
+      }
+    }
+  }
+
+  &__icon {
+    position: relative;
+    top: -2px;
+    transition: color $transition-300;
+    fill: transparent;
+    color: $color-white;
+    outline: none;
+
+    &--like {
+      stroke-width: 2;
+      stroke: $color-white;
+      transition: stroke $transition-300;
+    }
+  }
+
+  &__nav-title--full {
+    display: block;
+
+    @include vp-767 {
+      display: none;
+    }
+  }
+
+  &__nav-title--short {
+    display: none;
+
+    @include vp-767 {
+      display: block;
+    }
+  }
+
+}

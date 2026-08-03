@@ -1,0 +1,32 @@
+/* Global */
+/* ------------------------------------ */
+@use "global/modern-normalize" as *;
+@use "global/variables" as *;
+@use "global/mixins" as *;
+@use "global/fonts" as *;
+@use "global/reboot" as *;
+@use "global/container" as *;
+@use "global/visually-hidden" as *;
+
+
+/* components */
+/* ------------------------------------ */
+@use "components/btn" as *;
+@use "components/header" as *;
+@use "components/footer" as *;
+@use "components/cards" as *;
+@use "components/settings" as *;
+@use "components/favorites" as *;
+@use "components/modal" as *;
+@use "components/search" as *;
+@use "components/video-modal" as *;
+
+
+/* pages */
+/* ------------------------------------ */
+@use "pages/hero" as *;
+@use "pages/best-films" as *;
+@use "pages/genres" as *;
+@use "pages/genre" as *;
+@use "pages/about-film" as *;
+@use "pages/account" as *;

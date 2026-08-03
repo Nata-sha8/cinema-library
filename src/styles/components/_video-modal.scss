@@ -1,0 +1,189 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $color-dark-green-90;
+
+    @include vp-767 {
+      background-color: $color-black;
+    }
+  }
+
+  &__container {
+    position: relative;
+    width: 960px;
+    max-width: calc(100vw - 40px);
+    max-height: calc(100vh - 40px);
+    z-index: 2;
+
+    @include vp-1200 {
+      width: calc(100vw - 100px);
+      max-width: calc(100vw - 100px);
+    }
+
+    @include vp-1023-landscape {
+      width: calc(100vh * 16 / 9);
+      max-height: 100vh;
+      max-width: 100vw;
+      margin: 0 auto;
+    }
+
+    @include vp-767-portrait {
+      width: 100vw;
+      max-width: 100vw;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 80vh;
+    border-radius: 12px;
+    background-color: $color-black;
+    overflow: hidden;
+    cursor: pointer;
+
+    @include vp-1023-landscape {
+      max-height: 100vh;
+      border-radius: 0;
+    }
+
+    @include vp-767-portrait {
+      display: flex;
+      flex-direction: column;
+      border-radius: 0;
+      max-height: 70vh;
+      overflow: visible;
+    }
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 0;
+    right: -72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    color: $color-black;
+    background: $color-white;
+    cursor: pointer;
+    transition: color $transition-300;
+    z-index: 10;
+
+    @include vp-1200 {
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      padding: 10px;
+    }
+
+    @include vp-767-portrait {
+      top: 8px;
+      right: 8px;
+    }
+
+    &:hover {
+      color: $color-cornflower-blue;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+
+      @include vp-1023-landscape {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+
+  &__player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+
+    @include vp-767-portrait {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 24px;
+    left: 20px;
+    right: 20px;
+    min-height: 80px;
+    padding: 24px 40px;
+    color: $color-white;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    white-space: nowrap;
+    background: $color-dark-green-50;
+    transition:
+      opacity $transition-300,
+      visibility $transition-300;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+    visibility: hidden;
+
+    &.is-visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @include vp-1200 {
+      bottom: 0;
+      left: 0;
+      right: 0;
+      min-height: 72px;
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    @include vp-767-portrait {
+      position: absolute;
+      left: 50%;
+      top: calc(50% + (100vw * 9 / 16 / 2));
+      transform: translateX(-50%);
+      width: 100%;
+      height: auto;
+      min-height: 56px;
+      white-space: normal;
+      bottom: auto;
+    }
+  }
+}

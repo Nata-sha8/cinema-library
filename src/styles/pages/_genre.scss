@@ -1,0 +1,93 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.genre {
+  padding-top: 64px;
+  padding-bottom: 160px;
+
+  @include vp-767 {
+    padding-top: 25px;
+    padding-bottom: 64px;
+  }
+
+  &__title-wrapper {
+    display: flex;
+    gap: 16px;
+    margin: 0 0 64px;
+    align-items: center;
+
+    @include vp-767 {
+      margin-bottom: 40px;
+      gap: 10px;
+    }
+  }
+
+  &__genres-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: $color-white;
+    outline: none;
+    transition: color $transition-300;
+    outline: none;
+
+    &:focus-visible,
+    &:hover:not(:focus-visible) {
+      color: $color-heliotrope;
+    }
+
+    @include vp-767 {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+
+    @include vp-767 {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  &__list {
+    margin-bottom: 65px;
+
+    @include vp-767 {
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 40px;
+      align-items: center;
+    }
+
+    .cards__card {
+      @include vp-767 {
+        width: 335px;
+        height: 502px;
+      }
+    }
+
+    .cards__poster {
+      @include vp-767 {
+        width: 333px;
+        height: 500px;
+      }
+    }
+  }
+
+  &__more-card-btn {
+    display: block;
+    margin: 0 auto;
+
+    @include vp-767 {
+      padding: 16px 106px;
+    }
+  }
+}

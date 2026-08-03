@@ -1,0 +1,60 @@
+@use "../global/variables" as *;
+@use "../global/mixins" as *;
+
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  width: 100%;
+
+  @include vp-767 {
+    padding-top: 0;
+    padding-bottom: 36px;
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+    width: 100%;
+
+    @include vp-767 {
+      justify-content: flex-start;
+    }
+  }
+
+  &__link {
+    position: relative;
+    border: 1px solid $color-white-80;
+    border-radius: 8px;
+    width: 36px;
+    height: 36px;
+    color: $color-white-80;
+    transition:
+      color $transition-300,
+      border-color $transition-300;
+    outline: none;
+
+    @include vp-767 {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:focus-visible,
+    &:hover:not(:focus-visible) {
+      color: $color-heliotrope;
+      border-color: $color-heliotrope;
+    }
+  }
+
+  &__social-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @include vp-767 {
+      transform: translate(-50%, -50%) scale(0.6);
+    }
+  }
+}
