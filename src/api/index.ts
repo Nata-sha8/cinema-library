@@ -61,7 +61,7 @@ export const searchMoviesByTitle = async (title: string): Promise<Film[]> => {
   try {
     const films = await getMovies({ title });
     return films;
-  } catch (error) {
+  } catch {
     return [];
   }
 };

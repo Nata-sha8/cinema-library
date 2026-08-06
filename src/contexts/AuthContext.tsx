@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import { getProfile, logout as apiLogout, login as apiLogin, register as apiRegister } from "../api";
 import type { User } from "../types/user";
 
+/* eslint-disable react-refresh/only-export-components */
+
 interface AuthContextType {
   user: User | null;
   isLoading: boolean;
@@ -19,25 +21,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const login = useCallback(async (email: string, password: string) => {
-    try {
-      await apiLogin(email, password); // Логинимся (сервер создаёт сессию)
-      const userProfile = await getProfile(); // Загружаем профиль пользователя
-      setUser(userProfile); //Сохраняем пользователя
-
-      return userProfile;
-    } catch (error) {
-      throw error;
-    }
+    await apiLogin(email, password); // Логинимся (сервер создаёт сессию)
+    const userProfile = await getProfile(); // Загружаем профиль пользователя
+    setUser(userProfile); //Сохраняем пользователя
+    return userProfile;
   }, []);
 
-  const register = useCallback(async (data: { email: string; password: string; name: string; surname: string }) => {
-    try {
+  const register = useCallback(
+    async (data: { email: string; password: string; name: string; surname: string }) => {
       await apiRegister(data);
       await login(data.email, data.password);
-    } catch (error) {
-      throw error;
-    }
-  }, []);
+    },
+    [login],
+  );
 
   const logout = useCallback(async () => {
     try {
@@ -89,3 +85,4 @@ export const useAuth = () => {
   }
   return context;
 };
+/* eslint-enable react-refresh/only-export-components */

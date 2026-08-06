@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { validateField } from "../../utils/validation";
 
@@ -37,13 +37,19 @@ export default function RegisterModal({ isOpen, onClose, onSwitchToLogin, onSucc
   const passwordInputRef = useRef<HTMLInputElement>(null);
   const confirmPasswordInputRef = useRef<HTMLInputElement>(null);
 
-  // Сброс ошибок при открытии/закрытии
-  useEffect(() => {
-    if (!isOpen) {
-      setErrors({});
-      setGeneralError("");
-    }
-  }, [isOpen]);
+  const handleClose = () => {
+  setErrors({});
+  setGeneralError("");
+  onClose();
+};
+
+  // // Сброс ошибок при открытии/закрытии
+  // useEffect(() => {
+  //   if (!isOpen) {
+  //     setErrors({});
+  //     setGeneralError("");
+  //   }
+  // }, [isOpen]);
 
   // Обработка изменения полей
   const handleFieldChange = (field: keyof typeof formData, value: string) => {
@@ -120,7 +126,7 @@ export default function RegisterModal({ isOpen, onClose, onSwitchToLogin, onSucc
         confirmPassword: "",
       });
       setErrors({});
-    } catch (error) {
+    } catch {
       setGeneralError("Ошибка регистрации. Возможно, пользователь с таким email уже существует.");
     } finally {
       setIsLoading(false);
@@ -140,7 +146,7 @@ export default function RegisterModal({ isOpen, onClose, onSwitchToLogin, onSucc
     <div className="modal modal--register" id="register-modal" hidden>
       <div className="modal__overlay" onClick={handleOverlayClick}></div>
       <div className="modal__container">
-        <button className="modal__close-btn" type="button" aria-label="Закрыть" onClick={onClose}>
+        <button className="modal__close-btn" type="button" aria-label="Закрыть" onClick={handleClose}>
           <svg width="18" height="18" viewBox="0 0 13 13">
             <use href="/img/sprite.svg#close"></use>
           </svg>

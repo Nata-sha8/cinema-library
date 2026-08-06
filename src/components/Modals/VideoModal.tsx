@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { getEmbedUrl } from "../../utils/video";
 
+/* eslint-disable react-hooks/set-state-in-effect */
+
 interface VideoModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -21,7 +23,7 @@ export default function VideoModal({ isOpen, onClose, videoUrl = "", title = "" 
   // ========== УПРАВЛЕНИЯ ПЛЕЕРОМ ==========
 
   // Отправка команд в iframe
-  const sendCommandToPlayer = useCallback((command: string, args: any[] = []) => {
+  const sendCommandToPlayer = useCallback((command: string, args: unknown[] = []) => {
     if (!iframeRef.current?.contentWindow) return; //iframe не готов
     const message = JSON.stringify({
       event: "command",
@@ -35,9 +37,6 @@ export default function VideoModal({ isOpen, onClose, videoUrl = "", title = "" 
   const togglePlayPause = useCallback(() => {
     if (!iframeRef.current || !currentUrl) return; //Нет iframe или URL
     if (!isIframeReady) {
-      setTimeout(() => {
-        if (isIframeReady) togglePlayPause(); // Iframe повторная попытка
-      }, 500);
       return;
     }
 
@@ -130,7 +129,7 @@ export default function VideoModal({ isOpen, onClose, videoUrl = "", title = "" 
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, [isOpen, videoUrl, title, getEmbedUrl]);
+  }, [isOpen, videoUrl, title]);
 
   // Закрытие модалки
   useEffect(() => {
@@ -177,7 +176,9 @@ export default function VideoModal({ isOpen, onClose, videoUrl = "", title = "" 
             }
           }
         }
-      } catch (e) {} // Игнорируем ошибки парсинга
+      } catch {
+        // Игнорируем ошибки парсинга
+      } 
     };
     window.addEventListener("message", handlePlayerMessage);
     return () => window.removeEventListener("message", handlePlayerMessage);
@@ -210,3 +211,4 @@ export default function VideoModal({ isOpen, onClose, videoUrl = "", title = "" 
     </div>
   );
 }
+/* eslint-enable react-hooks/set-state-in-effect */

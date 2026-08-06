@@ -54,7 +54,7 @@ export default memo(function Header({
       }
       prevPathnameRef.current = location.pathname;
     }
-  }, [location.pathname, clearAll, searchInputValue, isSearchOpen]);
+  }, [location.pathname, clearAll, searchInputValue, isSearchOpen, resetMobileMode]);
 
   return (
     <header className="header">

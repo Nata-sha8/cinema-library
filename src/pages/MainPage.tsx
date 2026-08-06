@@ -23,7 +23,7 @@ export default function MainPage({ onLoginRequired }: MainPageProps) {
   const [error, setError] = useState<string | null>(null);
   const [isUpdating, setIsUpdating] = useState(false);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const [imageKey, setImageKey] = useState(Date.now());
+  const [imageKey, setImageKey] = useState(() => Date.now());
 
   useEffect(() => {
     const fetchData = async () => {

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { validateField } from "../../utils/validation";
 
@@ -24,13 +24,11 @@ export default function LoginModal({ isOpen, onClose, onSwitchToRegister }: Logi
   const emailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
 
-  // Сброс ошибок при открытии/закрытии
-  useEffect(() => {
-    if (!isOpen) {
-      setErrors({});
-      setGeneralError("");
-    }
-  }, [isOpen]);
+  const handleClose = () => {
+    setErrors({});
+    setGeneralError("");
+    onClose();
+  };
 
   // Обработка изменения полей
   const handleFieldChange = (field: "email" | "password", value: string) => {
@@ -77,7 +75,7 @@ export default function LoginModal({ isOpen, onClose, onSwitchToRegister }: Logi
       setEmail("");
       setPassword("");
       setErrors({});
-    } catch (error) {
+    } catch {
       setGeneralError("Неверный email или пароль");
     } finally {
       setIsLoading(false);
@@ -97,7 +95,7 @@ export default function LoginModal({ isOpen, onClose, onSwitchToRegister }: Logi
     <div className="modal modal--login" id="login-modal" hidden>
       <div className="modal__overlay" onClick={handleOverlayClick}></div>
       <div className="modal__container">
-        <button className="modal__close-btn" type="button" aria-label="Закрыть" onClick={onClose}>
+        <button className="modal__close-btn" type="button" aria-label="Закрыть" onClick={handleClose}>
           <svg width="18" height="18" viewBox="0 0 13 13">
             <use href="/img/sprite.svg#close"></use>
           </svg>
