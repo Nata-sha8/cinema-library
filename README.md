@@ -5,9 +5,9 @@ SPA-приложение для поиска фильмов: просмотр п
 **Демо:** [cinema-library-ghin47r3v-yshi1.vercel.app](https://cinema-library-ghin47r3v-yshi1.vercel.app)
 
 
-![Главная страница] (./screenshots/main_1.JPG)
+![Главная страница](./screenshots/main_1.JPG)
 
-![Главная страница] (./screenshots/main_2.JPG)
+![Главная страница](./screenshots/main_2.JPG)
 
 ![Мобильная версия](./screenshots/mobile_1.JPG)
 
