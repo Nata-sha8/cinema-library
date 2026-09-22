@@ -1,75 +1,77 @@
-# React + TypeScript + Vite
+Кинотека «Маруся»
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SPA-приложение для поиска фильмов: просмотр по жанрам, поиск, избранное и авторизация. 
+Вёрстка выполнена по макету из Figma в режиме pixel perfect, интерфейс полностью адаптивен под мобильные, планшеты и десктоп.
 
-Currently, two official plugins are available:
+Демо: https://cinema-library-ghin47r3v-yshi1.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+https://./screenshots/main_1.JPG
+https://./screenshots/main_2.JPG
+https://./screenshots/mobile_1.JPG
+https://./screenshots/mobile_2.JPG
 
-## React Compiler
+Стек:
+React 19 + TypeScript
+React Router DOM 7 — маршрутизация
+Context API — управление состоянием авторизации
+REST API — взаимодействие с сервером через нативный fetch
+Swiper 14 — мобильные карусели
+SCSS (Sass) — стилизация
+Vite 8 — сборка
+ESLint — линтинг
+Vercel — деплой
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Функциональность:
+Поиск фильмов с отдельными версиями для мобильных и десктопа
+Просмотр информации о фильмах по жанрам с пагинацией
+Добавление и удаление фильмов из избранного
+Авторизация и регистрация пользователей на основе сессий
+Видео-плеер на базе YouTube API
+Модальные окна: авторизация, регистрация, видео-плеер
+Полностью адаптивный интерфейс (мобильные, планшеты, десктоп)
+Мобильные карусели на Swiper
 
-## Expanding the ESLint configuration
+Что реализовано:
+Архитектура и состояние:
+Модульная архитектура с разделением на презентационные и контейнерные компоненты
+Современные хуки React для управления состоянием и побочными эффектами
+Контекстное хранилище для авторизации
+Слой для работы с REST API: обработка ошибок, управление сессиями
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Интерфейс:
+Вёрстка по макету из Figma в режиме pixel perfect
+Кастомный поиск с разными версиями для мобильных и десктопа
+Видео-плеер с управлением через YouTube API
+Модальные окна (авторизация, регистрация, плеер)
+Адаптив под все разрешения
+Мобильные карусели на Swiper
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Запуск локально: 
+# Клонировать репозиторий
+git clone https://github.com/Nata-sha8/cinema-library.git
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Перейти в папку
+cd cinema-library
 
-```
+# Установить зависимости
+npm install
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+# Запустить dev-сервер
+npm run dev
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+Структура проекта:
+src/
+├── api/          # слой работы с REST API
+├── components/   # переиспользуемые компоненты
+├── contexts/     # контексты (авторизация)
+├── css/          # CSS-файлы
+├── data/         # статические данные
+├── hooks/        # кастомные хуки
+├── pages/        # страницы приложения
+├── styles/       # глобальные стили и переменные SCSS
+├── types/        # TypeScript-типы
+├── utils/        # вспомогательные функции
+├── App.tsx       # корневой компонент
+└── main.tsx      # точка входа
